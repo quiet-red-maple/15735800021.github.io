@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 你好我的世界</title>
+  <title>Redux 实践 | 你好我的世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="你好我的世界">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="为了更深刻理解redux，我们将使用一个简化的购物车项目来学习Redux。 组织Redux代码首先，在src文件夹中创建一下文件和文件夹：src/├── actions│ └── cart-action.js├── index.js├── reducers│ ├── cart-reducer.js│ ├── index.js│ └── products-reducer.js└── store.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux 实践">
+<meta property="og:url" content="http://yoursite.com/2018/09/12/Redux-实践/index.html">
 <meta property="og:site_name" content="你好我的世界">
+<meta property="og:description" content="为了更深刻理解redux，我们将使用一个简化的购物车项目来学习Redux。 组织Redux代码首先，在src文件夹中创建一下文件和文件夹：src/├── actions│ └── cart-action.js├── index.js├── reducers│ ├── cart-reducer.js│ ├── index.js│ └── products-reducer.js└── store.js">
+<meta property="og:updated_time" content="2018-09-12T05:59:40.730Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你好我的世界">
+<meta name="twitter:title" content="Redux 实践">
+<meta name="twitter:description" content="为了更深刻理解redux，我们将使用一个简化的购物车项目来学习Redux。 组织Redux代码首先，在src文件夹中创建一下文件和文件夹：src/├── actions│ └── cart-action.js├── index.js├── reducers│ ├── cart-reducer.js│ ├── index.js│ └── products-reducer.js└── store.js">
   
     <link rel="alternative" href="/atom.xml" title="你好我的世界" type="application/atom+xml">
   
@@ -153,295 +157,162 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Redux-实践" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redux 实践
+    </h1>
+  
+
+        
+        <a href="/2018/09/12/Redux-实践/" class="archive-article-date">
+  	<time datetime="2018-09-12T05:54:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-12</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为了更深刻理解redux，我们将使用一个简化的<code>购物车项目</code>来学习Redux。</p>
+<h2 id="组织Redux代码"><a href="#组织Redux代码" class="headerlink" title="组织Redux代码"></a>组织Redux代码</h2><p>首先，在src文件夹中创建一下文件和文件夹：<br>src/<br>├── actions<br>│ └── cart-action.js<br>├── index.js<br>├── reducers<br>│ ├── cart-reducer.js<br>│ ├── index.js<br>│ └── products-reducer.js<br>└── store.js</p>
+<h2 id="定义添加、更新和删除商品的操作（action）。"><a href="#定义添加、更新和删除商品的操作（action）。" class="headerlink" title="定义添加、更新和删除商品的操作（action）。"></a>定义添加、更新和删除商品的操作（action）。</h2><p>// src/actions/cart-action.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置type类型</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> ADD_TO_CART = <span class="string">'ADD_TO_CART'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> UPDATE_CART = <span class="string">'UPDATE_CART'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> DELETE_FROM_CART = <span class="string">'DELETE_FROM_CART'</span>;</div><div class="line"></div><div class="line"><span class="comment">// action行为添加</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addToCart</span>(<span class="params">product, quantity, unitCost</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        type: ADD_TO_CART,</div><div class="line">        payload: &#123; product, quantity, unitCost &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//action行为修改</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">updateCart</span>(<span class="params">product, quantity, unitCost</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        type: UPDATE_CART,</div><div class="line">        payload: &#123;</div><div class="line">            product,</div><div class="line">            quantity,</div><div class="line">            unitCost</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//action行为删除</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">deleteFromCart</span>(<span class="params">product</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        type: DELETE_FROM_CART,</div><div class="line">        payload: &#123;</div><div class="line">            product</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="空的reducer（仅仅是为了展示如何在一个store中使用combineReducers函数组合多个reducer。）"><a href="#空的reducer（仅仅是为了展示如何在一个store中使用combineReducers函数组合多个reducer。）" class="headerlink" title="空的reducer（仅仅是为了展示如何在一个store中使用combineReducers函数组合多个reducer。）"></a>空的reducer（仅仅是为了展示如何在一个store中使用combineReducers函数组合多个reducer。）</h2><p>// src/reducers/products-reducer.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// reducer方法productsReducer</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">state=[], action</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> state;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="reducer处理action"><a href="#reducer处理action" class="headerlink" title="reducer处理action"></a>reducer处理action</h4><p>一个reducer需要处理不同的action类型，因此我们需要一个SWITCH语句。当一个ADD_TO_CART类型的action在应用程序中分发时，switch中的代码将处理它。<br>正如你所看到的，我们将action.payload中的数据与现有的state合并以创建一个新的state。<br>// src/reducers/cart-reducer.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; ADD_TO_CART, UPDATE_CART, DELETE_FROM_CART &#125; <span class="keyword">from</span> <span class="string">'../actions/cart-actions'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 定义的数据</span></div><div class="line"><span class="keyword">const</span> initialState = &#123;</div><div class="line">    cart: [</div><div class="line">        &#123;</div><div class="line">            product: <span class="string">'bread 700g'</span>,</div><div class="line">            quantity: <span class="number">2</span>,</div><div class="line">            unitCost: <span class="number">90</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            product: <span class="string">'milk 500ml'</span>,</div><div class="line">            quantity: <span class="number">1</span>,</div><div class="line">            unitCost: <span class="number">47</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// reducer方法cartReducer</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">state=initialState, action</span>) </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (action.type) &#123;</div><div class="line">        <span class="keyword">case</span> ADD_TO_CART: &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                <span class="comment">// 输出新的state</span></div><div class="line">                ...state,</div><div class="line">                <span class="comment">// 新增数据需从action.payload中取出</span></div><div class="line">                cart: [...state.cart, action.payload]</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">case</span> UPDATE_CART: &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                ...state,</div><div class="line">                cart: state.cart.map(<span class="function"><span class="params">item</span> =&gt;</span> item.product === action.payload.product ? action.payload : item)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">case</span> DELETE_FROM_CART: &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                ...state,</div><div class="line">                cart: state.cart.filter( <span class="function"><span class="params">item</span> =&gt;</span> item.product !== action.payload.product)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">default</span>: </div><div class="line">        <span class="keyword">return</span> state;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>##那么我们如何使用多个reducer呢？我们将用到Redux包中提供的combineReducers函数。<br>// src/reducers/index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</div><div class="line"><span class="keyword">import</span> productsReducer     <span class="keyword">from</span> <span class="string">'./products-reducer'</span>;</div><div class="line"><span class="keyword">import</span> cartReducer         <span class="keyword">from</span> <span class="string">'./cart-reducer'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> allReducers = &#123;</div><div class="line">    products: productsReducer,</div><div class="line">    shoppingCart: cartReducer</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用多个reducer</span></div><div class="line"><span class="keyword">const</span> rootReducer = combineReducers(allReducers);</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> rootReducer;</div></pre></td></tr></table></figure></p>
+<h2 id="引入createStore-方法创建store"><a href="#引入createStore-方法创建store" class="headerlink" title="引入createStore()方法创建store"></a>引入createStore()方法创建store</h2><p>// src/store.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</div><div class="line"><span class="keyword">import</span> rootReducer     <span class="keyword">from</span> <span class="string">'./reducers'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 创建store</span></div><div class="line"><span class="keyword">let</span>   store = createStore(rootReducer);</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</div></pre></td></tr></table></figure></p>
+<p>通过store中的unsubscribe方法监听store数据变化<br>通过dispatch触发action<br>store.dispatch(addToCart(‘));添加数据<br>store.dispatch(updateCart(‘));添加数据<br>store.dispatch(deleteFromCart(‘));添加数据<br>// src/index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> store                                     <span class="keyword">from</span> <span class="string">'./store.js'</span>;</div><div class="line"><span class="keyword">import</span> &#123; addToCart, updateCart, deleteFromCart &#125; <span class="keyword">from</span> <span class="string">'./actions/cart-action.js'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'initial state:'</span>, store.getState());</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">let</span> unsubscribe = store.subscribe( <span class="function"><span class="params">()</span> =&gt;</span></div><div class="line">    <span class="built_in">console</span>.log(store.getState())</div><div class="line">);</div><div class="line"><span class="comment">// 通过dispatch触发action添加数据</span></div><div class="line">store.dispatch(addToCart(<span class="string">'Coffee 500gm'</span>, <span class="number">1</span>, <span class="number">250</span>));</div><div class="line">store.dispatch(addToCart(<span class="string">'Flour 1kg'</span>, <span class="number">2</span>, <span class="number">110</span>));</div><div class="line">store.dispatch(addToCart(<span class="string">'Juice 2L'</span>, <span class="number">1</span>, <span class="number">250</span>));</div><div class="line"></div><div class="line"><span class="comment">// update修改</span></div><div class="line">store.dispatch(updateCart(<span class="string">'bread 700g'</span>, <span class="number">2</span>, <span class="number">5</span>));</div><div class="line"></div><div class="line"><span class="comment">// Delete删除</span></div><div class="line">store.dispatch(deleteFromCart(<span class="string">'Coffee 500gm'</span>, <span class="number">1</span>, <span class="number">250</span>));</div><div class="line"><span class="comment">// 监听数据变化</span></div><div class="line">unsubscribe();</div></pre></td></tr></table></figure></p>
+<h2 id="最后需要在index-js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。"><a href="#最后需要在index-js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。" class="headerlink" title="最后需要在index.js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。"></a>最后需要在index.js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React                                     <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> ReactDOM                                  <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Provider &#125;                              <span class="keyword">from</span> <span class="string">'react-redux'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> App = &lt;h1&gt;Redux Shopping Cart&lt;/h1&gt;;</div><div class="line">ReactDOM.render(</div><div class="line">    &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">      &#123; App &#125;</div><div class="line">    &lt;<span class="regexp">/Provider&gt; ,</span></div><div class="line"><span class="regexp">    document.getElementById('root')</span></div><div class="line"><span class="regexp">  );</span></div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/21/ajax总结/" class="archive-article-date">
-  	<time datetime="2017-10-21T02:31:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/21/ajax总结/">ajax总结</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/09/12/Redux-实践/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/19/ajax面试题/" class="archive-article-date">
-  	<time datetime="2017-10-19T12:05:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/11/浅入-Redux/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅入 Redux</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/19/ajax面试题/">ajax面试题</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/16/贪吃蛇大作战/" class="archive-article-date">
-  	<time datetime="2017-10-16T11:24:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/16/贪吃蛇大作战/">贪吃蛇大作战</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/12/通过-拖拽-认识对象继承与对象冒充/" class="archive-article-date">
-  	<time datetime="2017-10-12T12:11:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/12/通过-拖拽-认识对象继承与对象冒充/">通过&#39;拖拽&#39;认识对象继承与对象冒充</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/11/通过-拖拽-来了解js中的this指向/" class="archive-article-date">
-  	<time datetime="2017-10-11T13:04:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/11/通过-拖拽-来了解js中的this指向/">通过过&#39;拖拽&#39;来了解js中的this指向</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/11/构造函数this指向/" class="archive-article-date">
-  	<time datetime="2017-10-11T02:37:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/11/构造函数this指向/">构造函数this指向</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/10/轮播图分步解析/" class="archive-article-date">
-  	<time datetime="2017-10-10T10:58:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/10/轮播图分步解析/">轮播图分步解析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/10/js中的事件/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:48:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/10/js中的事件/">js中的事件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/10/JS-封装好的运动函数/" class="archive-article-date">
-  	<time datetime="2017-10-10T05:37:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/10/JS-封装好的运动函数/">JS.封装好的运动函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/10/js-缓冲运动封装函数/" class="archive-article-date">
-  	<time datetime="2017-10-10T05:36:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/10/js-缓冲运动封装函数/">js.缓冲运动封装函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +336,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

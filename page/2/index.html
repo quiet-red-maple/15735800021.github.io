@@ -155,6 +155,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ajax总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/21/ajax总结/">ajax总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/21/ajax总结/" class="archive-article-date">
+  	<time datetime="2017-10-21T02:31:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近学习使用AJAX来获取后台数据，通过使用AJAX我们可以实现页面无刷新自动获取最新数据，是一种非常实用的创建快速动态网页的技术。在这里我总结了一些AJAX的知识点来供大家学习与参考。通过运用AJAX实时获取后台数据做了一个模拟聊天室。<img src="img/1.png"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1.AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。</div><div class="line">2.AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。</div><div class="line">3.AJAX不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的Web应用程序的技术。</div><div class="line">4.AJAX的核心对象为XMLHTTPRequest。</div><div class="line">5.AJAX中的异步请求是同时做多件事，速度快，同步请求是只做一件事，速度慢。多用异步请求，只有在少数情况必须需要前面的数据内容才能运行的情况下用同步请求。</div></pre></td></tr></table></figure></p>
+<p>至于更多的详细的知识点可以看我上一篇博客总结的一些AJAX面试题。</p>
+<p>下面是AJAX的核心步骤。</p>
+<p>“GET”请求的ajax核心四步<br>第一步：创建对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div></pre></td></tr></table></figure></p>
+<p>第二步：准备好需要发送请求的方式、地址、和是否是同步异步<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"GET"</span>, <span class="string">"http://localhost:8080/ajax/person"</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
+<p>第三步：发送请求<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.send();</div></pre></td></tr></table></figure></p>
+<p>第四步：获取数据,先判断是否获取到数据，str为获取到的后台数据为字符串，需要将其转化为JSON形式来获取其中的具体数据。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span> (xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</div><div class="line">			<span class="keyword">var</span> str = xhr.responseText;</div><div class="line">			<span class="keyword">var</span> obj = <span class="built_in">JSON</span>.parse(str);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>“POST”请求的ajax核心五步<br>第一步：创建对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div></pre></td></tr></table></figure></p>
+<p>第二步：准备好需要发送请求的方式、地址、和是否是同步异步<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"POST"</span>, <span class="string">"http://localhost:8080/ajax/football"</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
+<p>第三步：POST需要使用XHR来模仿表单提交<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</div></pre></td></tr></table></figure></p>
+<p>第四步：发送请求,post请求发送的数据是放在send方法中传递的。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.send(<span class="string">"pageNo=1"</span>);</div></pre></td></tr></table></figure></p>
+<p>第五步：获取数据,先判断是否获取到数据，str为获取到的后台数据为字符串，需要将其转化为JSON形式来获取其中的具体数据。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span> (xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</div><div class="line">			<span class="keyword">var</span> str = xhr.responseText;</div><div class="line">			<span class="keyword">var</span> obj = <span class="built_in">JSON</span>.parse(str);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/21/ajax总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ajax面试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -739,87 +813,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/10/js-缓冲运动封装函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js-中的this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/js-中的this/">js.中的this</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/js-中的this/" class="archive-article-date">
-  	<time datetime="2017-10-10T05:35:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>this是Javascript语言的一个关键字。<br>它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用。比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">　　function test()&#123; </div><div class="line"></div><div class="line">　　　　this.x = 1; </div><div class="line"></div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
-<p>随着函数使用场合的不同，this的值会发生变化。但是有一个总的原则，那就是this指的是，调用函数的那个对象。 </p>
-<p>下面分四种情况，详细讨论this的用法。 </p>
-<p>##情况一：纯粹的函数调用 </p>
-<p>这是函数的最通常用法，属于全局性调用，因此this就代表全局对象Global。 </p>
-<p>下面这段代码，它的运行结果是1。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">　　function test()&#123; </div><div class="line"></div><div class="line">　　　　this.x = 1; </div><div class="line"></div><div class="line">　　　　alert(this.x); </div><div class="line"></div><div class="line">　　&#125; </div><div class="line"></div><div class="line">　　test(); // 1</div></pre></td></tr></table></figure></p>
-<p>为了证明this就是全局对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">　　var x = 1; </div><div class="line"></div><div class="line">　　function test()&#123; </div><div class="line"></div><div class="line">　　　　alert(this.x); </div><div class="line"></div><div class="line">　　&#125; </div><div class="line"></div><div class="line">　　test(); // 1</div></pre></td></tr></table></figure></p>
-<p>运行结果还是1。再变一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">　　var x = 1; </div><div class="line"></div><div class="line">　　function test()&#123; </div><div class="line"></div><div class="line">　　　　this.x = 0; </div><div class="line"></div><div class="line">　　&#125; </div><div class="line"></div><div class="line">　　test(); </div><div class="line"></div><div class="line">　　alert(x); //0</div></pre></td></tr></table></figure></p>
-<p>##情况二：作为对象方法的调用 </p>
-<p>函数还可以作为某个对象的方法调用，这时this就指这个上级对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">　　function test()&#123; </div><div class="line"></div><div class="line">　　　　alert(this.x); </div><div class="line"></div><div class="line">　　&#125; </div><div class="line"></div><div class="line">　　var o = &#123;&#125;; </div><div class="line"></div><div class="line">　　o.x = 1; </div><div class="line"></div><div class="line">　　o.m = test; </div><div class="line"></div><div class="line">　　o.m(); // 1</div></pre></td></tr></table></figure></p>
-<p>##情况三 作为构造函数调用 </p>
-<p>所谓构造函数，就是通过这个函数生成一个新对象（object）。这时，this就指这个新对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">　　function test()&#123; </div><div class="line"></div><div class="line">　　　　this.x = 1; </div><div class="line"></div><div class="line">　　&#125; </div><div class="line"></div><div class="line">　　var o = new test(); </div><div class="line"></div><div class="line">　　alert(o.x); // 1</div></pre></td></tr></table></figure></p>
-<p>运行结果为1。为了表明这时this不是全局对象，我对代码做一些改变：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">　　var x = 2; </div><div class="line"></div><div class="line">　　function test()&#123; </div><div class="line"></div><div class="line">　　　　this.x = 1; </div><div class="line"></div><div class="line">　　&#125; </div><div class="line"></div><div class="line">　　var o = new test(); </div><div class="line"></div><div class="line">　　alert(x); //2</div></pre></td></tr></table></figure></p>
-<p>运行结果为2，表明全局变量x的值根本没变。 </p>
-<p>##情况四 apply调用 </p>
-<p>apply()是函数对象的一个方法，它的作用是改变函数的调用对象，它的第一个参数就表示改变后的调用这个函数的对象。因此，this指的就是这第一个参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">　　var x = 0; </div><div class="line"></div><div class="line">　　function test()&#123; </div><div class="line"></div><div class="line">　　　　alert(this.x); </div><div class="line"></div><div class="line">　　&#125; </div><div class="line"></div><div class="line">　　var o=&#123;&#125;; </div><div class="line"></div><div class="line">　　o.x = 1; </div><div class="line"></div><div class="line">　　o.m = test; </div><div class="line"></div><div class="line">　　o.m.apply(); //0</div></pre></td></tr></table></figure></p>
-<p>apply()的参数为空时，默认调用全局对象。因此，这时的运行结果为0，证明this指的是全局对象。 </p>
-<p>如果把最后一行代码修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">o.m.apply(o); //1</div></pre></td></tr></table></figure></p>
-<p>运行结果就变成了1，证明了这时this代表的是对象o</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/js-中的this/">展开全文 >></a>
         </p>
       
 
