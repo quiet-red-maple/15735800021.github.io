@@ -155,6 +155,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jQuery总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/23/jQuery总结/">jQuery总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/23/jQuery总结/" class="archive-article-date">
+  	<time datetime="2017-10-23T09:34:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>jQuery是一个快速、简洁的JavaScript框架，它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。它具有以下特点：<br>1.快速获取文档元素<br>jQuery的选择机制构建于Css的选择器，它提供了快速查询DOM文档中元素的能力，而且大大强化了JavaScript中获取页面元素的方式。<br>2.提供漂亮的页面动态效果<br>jQuery中内置了一系列的动画效果，可以开发出非常漂亮的网页，许多网站都使用jQuery的内置的效果，比如淡入淡出、元素移除等动态特效。<br>3.创建AJAX无刷新网页<br>AJAX是异步的JavaScript和ML的简称，可以开发出非常灵敏无刷新的网页，特别是开发服务器端网页时，比如PHP网站，需要往返地与服务器通信，如果不使用AJAX，每次数据更新不得不重新刷新网页，而使用AJAX特效后，可以对页面进行局部刷新，提供动态的效果。<br>4.提供对JavaScript语言的增强<br>jQuery提供了对基本JavaScript结构的增强，比如元素迭代和数组处理等操作。<br>增强的事件处理<br>5.jQuery提供了各种页面事件，它可以避免程序员在HTML中添加太事件处理代码，最重要的是，它的事件处理器消除了各种浏览器兼容性问题。<br>6.更改网页内容<br>jQuery可以修改网页中的内容，比如更改网页的文本、插入或者翻转网页图像，jQuery简化了原本使用JavaScript代码需要处理的方式。<br>在jquery中我觉得最强大的是它可以很容易在js中获取到html中的元素并对其进行操作。<br>下面我列举了jQuery中的选择器。<br><img src="img/jq1.png"><br><img src="img/jq2.png"><br><img src="img/jq3.png"><br><img src="img/jq4.png"><br><img src="img/jq5.png"><br><img src="img/jq6.png"><br><img src="img/jq7.png"><br><img src="img/jq8.png"><br><img src="img/jq9.png"><br>在原生js中我们一般使用onload来规定在页面加载完成后再进行，在jq中我们可以使用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</div><div class="line">可简写为</div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</div></pre></td></tr></table></figure></p>
+<p>上述为DOM元素都加载完成之后执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">window</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</div></pre></td></tr></table></figure></p>
+<p>上述为DOM元素以及图片等加载完成再执行。<br>获取样式以及修改样式。可以通过标签名、id名、class名等来获取元素。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).css(&#123;width&#125;)</div><div class="line">$(<span class="string">"div"</span>).css(&#123;<span class="attr">width</span>:<span class="string">"+=px"</span>&#125;)</div></pre></td></tr></table></figure></p>
+<p>jquery实现动画移动到高200px左500px的位置2秒完成，还可以调用其他函数，例如给运动加一些缓冲的特效。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"box"</span>).animate(&#123;<span class="attr">left</span>:<span class="number">500</span>,<span class="attr">top</span>:<span class="number">200</span>&#125;,<span class="number">2000</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</div></pre></td></tr></table></figure></p>
+<p>还有许多小巧好用的jquery<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#box"</span>).hide(<span class="number">2000</span>)<span class="comment">//缩小隐藏</span></div><div class="line">$(<span class="string">"#box"</span>).show(<span class="number">2000</span>)<span class="comment">//隐藏显示</span></div><div class="line">$(<span class="string">"#box"</span>).fadeOut(<span class="number">2000</span>)<span class="comment">//淡出</span></div><div class="line">$(<span class="string">"#box"</span>).fadeIn(<span class="number">2000</span>)<span class="comment">//淡入</span></div><div class="line">$(<span class="string">"#box"</span>).stop(<span class="literal">true</span>,<span class="literal">true</span>)<span class="comment">//停止第一个true停止动画，第二个true是停止并直接完成动画。</span></div><div class="line">$(<span class="string">"#box"</span>).mouseover()</div><div class="line">$(<span class="string">"#box"</span>).mouseenter()</div><div class="line"><span class="comment">//两者都是鼠标移入事件但前者会事件冒泡后者不会。</span></div><div class="line">$(<span class="built_in">window</span>).scroll(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)<span class="comment">//滚动条滚动时触发事件。</span></div><div class="line">$(<span class="string">"body,html"</span>)animate(&#123;<span class="attr">scrollTop</span>:<span class="number">0</span>&#125;,<span class="number">1000</span>)<span class="comment">//一秒完成回到顶部</span></div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/23/jQuery总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ajax总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -750,69 +817,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/10/JS-封装好的运动函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js-缓冲运动封装函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/js-缓冲运动封装函数/">js.缓冲运动封装函数</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/js-缓冲运动封装函数/" class="archive-article-date">
-  	<time datetime="2017-10-10T05:36:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div></pre></td><td class="code"><pre><div class="line">//缓冲的各种公式</div><div class="line">	var Tween = &#123; </div><div class="line">		Linear: function(t, b, c, d) &#123;</div><div class="line">	        return c * t / d + b;</div><div class="line">	    &#125;,</div><div class="line">	    //二次的</div><div class="line">	    QuadEaseIn: function(t, b, c, d) &#123;</div><div class="line">	        return c * (t /= d) * t + b;</div><div class="line">	    &#125;,</div><div class="line">	    QuadEaseOut: function(t, b, c, d) &#123;</div><div class="line">	        return -c * (t /= d) * (t - 2) + b;</div><div class="line">	    &#125;,</div><div class="line">	    QuadEaseInOut: function(t, b, c, d) &#123;</div><div class="line">	        if ((t /= d / 2) &lt; 1) return c / 2 * t * t + b;</div><div class="line">	        return -c / 2 * ((--t) * (t - 2) - 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    //三次的</div><div class="line">	    CubicEaseIn: function(t, b, c, d) &#123;</div><div class="line">	        return c * (t /= d) * t * t + b;</div><div class="line">	    &#125;,</div><div class="line">	    CubicEaseOut: function(t, b, c, d) &#123;</div><div class="line">	        return c * ((t = t / d - 1) * t * t + 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    CubicEaseInOut: function(t, b, c, d) &#123;</div><div class="line">	        if ((t /= d / 2) &lt; 1) return c / 2 * t * t * t + b;</div><div class="line">	        return c / 2 * ((t -= 2) * t * t + 2) + b;</div><div class="line">	    &#125;,</div><div class="line">	    //四次的</div><div class="line">	    QuartEaseIn: function(t, b, c, d) &#123;</div><div class="line">	        return c * (t /= d) * t * t * t + b;</div><div class="line">	    &#125;,</div><div class="line">	    QuartEaseOut: function(t, b, c, d) &#123;</div><div class="line">	        return -c * ((t = t / d - 1) * t * t * t - 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    QuartEaseInOut: function(t, b, c, d) &#123;</div><div class="line">	        if ((t /= d / 2) &lt; 1) return c / 2 * t * t * t * t + b;</div><div class="line">	        return -c / 2 * ((t -= 2) * t * t * t - 2) + b;</div><div class="line">	    &#125;,</div><div class="line">	    QuartEaseIn: function(t, b, c, d) &#123;</div><div class="line">	        return c * (t /= d) * t * t * t * t + b;</div><div class="line">	    &#125;,</div><div class="line">	    QuartEaseOut: function(t, b, c, d) &#123;</div><div class="line">	        return c * ((t = t / d - 1) * t * t * t * t + 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    QuartEaseInOut: function(t, b, c, d) &#123;</div><div class="line">	        if ((t /= d / 2) &lt; 1) return c / 2 * t * t * t * t * t + b;</div><div class="line">	        return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;</div><div class="line">	    &#125;,</div><div class="line">	    //正弦的</div><div class="line">	    SineEaseIn: function(t, b, c, d) &#123;</div><div class="line">	        return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;</div><div class="line">	    &#125;,</div><div class="line">	    SineEaseOut: function(t, b, c, d) &#123;</div><div class="line">	        return c * Math.sin(t / d * (Math.PI / 2)) + b;</div><div class="line">	    &#125;,</div><div class="line">	    SineEaseInOut: function(t, b, c, d) &#123;</div><div class="line">	        return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    ExpoEaseIn: function(t, b, c, d) &#123;</div><div class="line">	        return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;</div><div class="line">	    &#125;,</div><div class="line">	    ExpoEaseOut: function(t, b, c, d) &#123;</div><div class="line">	        return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    ExpoEaseInOut: function(t, b, c, d) &#123;</div><div class="line">	        if (t == 0) return b;</div><div class="line">	        if (t == d) return b + c;</div><div class="line">	        if ((t /= d / 2) &lt; 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;</div><div class="line">	        return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;</div><div class="line">	    &#125;,</div><div class="line">	    CircEaseIn: function(t, b, c, d) &#123;</div><div class="line">	        return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    CircEaseOut: function(t, b, c, d) &#123;</div><div class="line">	        return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;</div><div class="line">	    &#125;,</div><div class="line">	    CircEaseInOut: function(t, b, c, d) &#123;</div><div class="line">	        if ((t /= d / 2) &lt; 1) return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;</div><div class="line">	        return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    ElasticEaseIn: function(t, b, c, d, a, p) &#123;</div><div class="line">	        if (t == 0) return b;</div><div class="line">	        if ((t /= d) == 1) return b + c;</div><div class="line">	        if (!p) p = d * .3;</div><div class="line">	        if (!a || a &lt; Math.abs(c)) &#123;</div><div class="line">	            a = c;</div><div class="line">	            var s = p / 4;</div><div class="line">	        &#125; else var s = p / (2 * Math.PI) * Math.asin(c / a);</div><div class="line">	        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;</div><div class="line">	    &#125;,</div><div class="line">	    ElasticEaseOut: function(t, b, c, d, a, p) &#123;</div><div class="line">	        if (t == 0) return b;</div><div class="line">	        if ((t /= d) == 1) return b + c;</div><div class="line">	        if (!p) p = d * .3;</div><div class="line">	        if (!a || a &lt; Math.abs(c)) &#123;</div><div class="line">	            a = c;</div><div class="line">	            var s = p / 4;</div><div class="line">	        &#125; else var s = p / (2 * Math.PI) * Math.asin(c / a);</div><div class="line">	        return (a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b);</div><div class="line">	    &#125;,</div><div class="line">	    ElasticEaseInOut: function(t, b, c, d, a, p) &#123;</div><div class="line">	        if (t == 0) return b;</div><div class="line">	        if ((t /= d / 2) == 2) return b + c;</div><div class="line">	        if (!p) p = d * (.3 * 1.5);</div><div class="line">	        if (!a || a &lt; Math.abs(c)) &#123;</div><div class="line">	            a = c;</div><div class="line">	            var s = p / 4;</div><div class="line">	        &#125; else var s = p / (2 * Math.PI) * Math.asin(c / a);</div><div class="line">	        if (t &lt; 1) return -.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;</div><div class="line">	        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b;</div><div class="line">	    &#125;,</div><div class="line">	    //冲过头系列</div><div class="line">	    BackEaseIn: function(t, b, c, d, s) &#123;</div><div class="line">	        if (s == undefined) s = 1.70158;</div><div class="line">	        return c * (t /= d) * t * ((s + 1) * t - s) + b;</div><div class="line">	    &#125;,</div><div class="line">	    BackEaseOut: function(t, b, c, d, s ) &#123;</div><div class="line">	        if (s == undefined) s = 1.70158;</div><div class="line">	        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;</div><div class="line">	    &#125;,</div><div class="line">	    BackEaseInOut: function(t, b, c, d, s) &#123;</div><div class="line">	        if (s == undefined) s = 1.70158;</div><div class="line">	        if ((t /= d / 2) &lt; 1) return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;</div><div class="line">	        return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;</div><div class="line">	    &#125;,</div><div class="line">	    //弹跳系列</div><div class="line">	    BounceEaseIn: function(t, b, c, d) &#123;</div><div class="line">	        return c - Tween.BounceEaseOut(d - t, 0, c, d) + b;</div><div class="line">	    &#125;,</div><div class="line">	    BounceEaseOut: function(t, b, c, d) &#123;</div><div class="line">	        if ((t /= d) &lt; (1 / 2.75)) &#123;</div><div class="line">	            return c * (7.5625 * t * t) + b;</div><div class="line">	        &#125; else if (t &lt; (2 / 2.75)) &#123;</div><div class="line">	            return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;</div><div class="line">	        &#125; else if (t &lt; (2.5 / 2.75)) &#123;</div><div class="line">	            return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;</div><div class="line">	        &#125; else &#123;</div><div class="line">	            return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;</div><div class="line">	        &#125;</div><div class="line">	    &#125;,</div><div class="line">	    BounceEaseInOut: function(t, b, c, d) &#123;</div><div class="line">	        if (t &lt; d / 2) return Tween.BounceEaseIn(t * 2, 0, c, d) * .5 + b;</div><div class="line">	        else return Tween.BounceEaseOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;</div><div class="line">	    &#125;</div><div class="line">	&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/js-缓冲运动封装函数/">展开全文 >></a>
         </p>
       
 
