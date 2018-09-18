@@ -155,6 +155,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JS-封装好的运动函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/JS-封装好的运动函数/">JS.封装好的运动函数</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/JS-封装好的运动函数/" class="archive-article-date">
+  	<time datetime="2017-10-10T05:37:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##运动函数animate<br>animate函数是动画封装函数<br>参数：<br>elem参数是运动的对象<br>targetJSON参数是运动的终点状态<br>time参数是运动总时间，单位为毫秒<br>tweenString缓冲描述词，例如“linear”，可选<br>callback是回调函数，可选<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div></pre></td><td class="code"><pre><div class="line">function animate(elem , targetJSON , time , tweenString , callback)&#123;</div><div class="line">	//函数重载，用户传进来的参数数量、类型可能不一样</div><div class="line">	//检查数量和类型</div><div class="line">	if(arguments.length &lt; 3 || typeof arguments[0] != &quot;object&quot; || typeof arguments[1] != &quot;object&quot; || typeof arguments[2] != &quot;number&quot;)&#123;</div><div class="line">		throw new Error(&quot;对不起，你传进来的参数数量不对或者参数类型不对，请仔细检查哦！&quot;);</div><div class="line">		return;</div><div class="line">	&#125;else if(arguments.length == 3)&#123;</div><div class="line">		//用户只传进来3个参数，表示tweenString、callback被省略了，那么我们默认使用Linear当做缓冲词</div><div class="line">		tweenString = &quot;Linear&quot;;</div><div class="line">		//默认回调函数是null</div><div class="line">		callback = null;</div><div class="line">	&#125;else if(arguments.length == 4)&#123;</div><div class="line">		//用户只传进来4个参数，第4个参数可能传进来的是tweenString，也可能是callback</div><div class="line">		switch(typeof arguments[3])&#123;</div><div class="line">			case &quot;string&quot; : </div><div class="line">				//用户传进来的是缓冲描述词儿，所以就把callback补为null</div><div class="line">				callback = null;</div><div class="line">				break;</div><div class="line">			case &quot;function&quot; : </div><div class="line">				callback = arguments[3];</div><div class="line">				tweenString = &quot;Linear&quot;;</div><div class="line">				break;</div><div class="line">			default : </div><div class="line">				throw new Error(&quot;抱歉，第4个参数要么是缓冲描述词，要么是回调函数，请检查！&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	//动画间隔要根据不同浏览器来设置：</div><div class="line">	if(window.navigator.userAgent.indexOf(&quot;MSIE&quot;) != -1)&#123;</div><div class="line">		var interval = 50;	</div><div class="line">	&#125;else&#123;</div><div class="line">		var interval = 20;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	//强行给我们的动画元素增加一个isanimated的属性，是否正在运动</div><div class="line">	elem.isanimated = true;</div><div class="line"></div><div class="line">	//初始状态，放在origninalJSON里面</div><div class="line">	var originalJSON = &#123;&#125;;</div><div class="line">	//变化的多少，放在deltaJSON里面</div><div class="line">	var deltaJSON = &#123;&#125;;</div><div class="line">	//给信号量对象添加属性，添加什么属性，目标对象中有什么属性，这里就添加什么属性</div><div class="line">	//值就是当前的计算样式</div><div class="line">	for(var k in targetJSON)&#123;</div><div class="line">		//初试JSON</div><div class="line">		originalJSON[k] = parseFloat(fetchComputedStyle(elem , k));</div><div class="line">		//把每个targetJSON中的值都去掉px</div><div class="line">		targetJSON[k] = parseFloat(targetJSON[k]);</div><div class="line">		//变化量JSON</div><div class="line">		deltaJSON[k] = targetJSON[k] - originalJSON[k];</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 至此我们得到了三个JSON：</div><div class="line">	// originalJSON 初始状态集合，这个JSON永远不变</div><div class="line">	// targetJSON 目标状态集合，这个JSON永远不变</div><div class="line">	// deltaJSON  差值集合，这个JSON永远不变</div><div class="line">	// console.log(originalJSON);</div><div class="line">	// console.log(targetJSON);</div><div class="line">	// console.log(deltaJSON);</div><div class="line"></div><div class="line">	//总执行函数次数：</div><div class="line">	var maxFrameNumber = time / interval;</div><div class="line">	//当前帧编号</div><div class="line">	var frameNumber = 0;</div><div class="line">	//这是一个临时变量一会儿用	</div><div class="line">	var n;</div><div class="line">	//定时器</div><div class="line">	var timer = setInterval(function()&#123;</div><div class="line">		//要让所有的属性发生变化</div><div class="line">		for(var k in originalJSON)&#123;</div><div class="line">			//动：</div><div class="line">			// n就表示这一帧应该在的位置：</div><div class="line">			n = Tween[tweenString](frameNumber , originalJSON[k] , deltaJSON[k] , maxFrameNumber);</div><div class="line">			//根据是不是opacity来设置单位</div><div class="line">			if(k != &quot;opacity&quot;)&#123;</div><div class="line">				elem.style[k] = n + &quot;px&quot;;</div><div class="line">			&#125;else&#123;</div><div class="line">				elem.style[k] = n;</div><div class="line">				elem.style.filter = &quot;alpha(opacity=&quot; + n * 100 + &quot;)&quot;;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		//计数器</div><div class="line">		frameNumber++;</div><div class="line">		if(frameNumber == maxFrameNumber)&#123;</div><div class="line">			//次数够了，所以停表。</div><div class="line">			//这里抖一个小机灵，我们强行让elem跑到targetJSON那个位置</div><div class="line">			for(var k in targetJSON)&#123;</div><div class="line">				if(k != &quot;opacity&quot;)&#123;</div><div class="line">					elem.style[k] = targetJSON[k] + &quot;px&quot;;</div><div class="line">				&#125;else&#123;</div><div class="line">					elem.style[k] = targetJSON[k];</div><div class="line">					elem.style.filter = &quot;alpha(opacity=&quot; + (targetJSON[k] * 100) + &quot;)&quot;;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			//停表</div><div class="line">			clearInterval(timer);</div><div class="line">			//拿掉是否在动属性，设为false</div><div class="line">			elem.isanimated = false;</div><div class="line">			//调用回调函数，并且让回调函数中的this表示运动的对象</div><div class="line">			//我们加上了判断，如果callback存在，再执行函数</div><div class="line">			callback &amp;&amp; callback.apply(elem);</div><div class="line">		&#125;</div><div class="line">	&#125;,interval);</div><div class="line"></div><div class="line">	//之前的轮子，计算后样式</div><div class="line">	function fetchComputedStyle(obj , property)&#123;</div><div class="line">		//能力检测</div><div class="line">		if(window.getComputedStyle)&#123;</div><div class="line">			//现在要把用户输入的property中检测一下是不是驼峰，转为连字符写法</div><div class="line">			//强制把用户输入的词儿里面的大写字母，变为小写字母加-</div><div class="line">			//paddingLeft  →  padding-left</div><div class="line">			property = property.replace(/([A-Z])/g , function(match,$1)&#123;</div><div class="line">				return &quot;-&quot; + $1.toLowerCase();</div><div class="line">			&#125;);</div><div class="line"></div><div class="line">			return window.getComputedStyle(obj)[property];</div><div class="line">		&#125;else&#123;</div><div class="line">			//IE只认识驼峰，我们要防止用户输入短横，要把短横改为大写字母</div><div class="line">			//padding-left  → paddingLeft </div><div class="line">			property = property.replace(/\-([a-z])/g , function(match,$1)&#123;</div><div class="line">				return $1.toUpperCase();</div><div class="line">			&#125;);</div><div class="line"></div><div class="line">			return obj.currentStyle[property];</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/JS-封装好的运动函数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js-缓冲运动封装函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
