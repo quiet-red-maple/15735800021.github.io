@@ -155,6 +155,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-拆票系统项目页面功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/05/拆票系统项目页面功能/">拆票系统项目页面功能</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/05/拆票系统项目页面功能/" class="archive-article-date">
+  	<time datetime="2018-11-05T03:57:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>项目演示地址：<br>  <a href="http://39.104.136.10:8008" target="_blank" rel="external">http://39.104.136.10:8008</a></p>
+<h2 id="一、已完成部分"><a href="#一、已完成部分" class="headerlink" title="一、已完成部分"></a>一、已完成部分</h2><p>登陆、注册、忘记密码、</p>
+<h2 id="二、目前开发部分"><a href="#二、目前开发部分" class="headerlink" title="二、目前开发部分"></a>二、目前开发部分</h2><p>会员中心模块——填写信息</p>
+<h2 id="三、待开发部分"><a href="#三、待开发部分" class="headerlink" title="三、待开发部分"></a>三、待开发部分</h2><p>金付信息、融资管理、供应商管理模块、文件管理<br>| 模块  | 功能 | 开发状态 |<br>|:——-:|:——-:|:——-:|<br>|   登陆注册模块  |                     注册        |   开发中（功能已实现剩余邀请码查看邀请公司）   |<br>|   登陆注册模块  |忘记密码（重置密码）|   已完成   |<br>|   登陆注册模块  |            登陆                 |   已完成   |<br>|   会员中心模块  |     基本信息——个人信息  |   已完成   |<br>|   会员中心模块  |     基本信息——企业信息  |   已完成   |<br>|   会员中心模块  |     基本信息——安全管理  |   开发中（交易密码修改待定）   |<br>|   会员中心模块  |     基本信息——消息中心|   开发中（静态页面已完成）   |<br>|   会员中心模块  |     基本信息——填写基础信息|   开发中（静态页面已完成）   |<br>|   会员中心模块  |     基本信息——填写企业信息|   开发中（静态页面已完成）   |<br>|   会员中心模块  |     基本信息——填写银行卡信息|   开发中（静态页面已完成）   |<br>|   会员中心模块  |     我的账户|   开发中（静态页面已完成）   |<br>|   会员中心模块  |     我的额度|   开发中（静态页面已完成）   |<br>|   金付信息模块  |     金付流转|   待开发   |<br>|   金付信息模块  |     金付签收|   待开发   |<br>|   金付信息模块  |     金付查询|   待开发   |<br>|   融资管理模块  |     融资申请|   待开发   |<br>|   供应商管理模块  |     我的供应商|   待开发   |<br>|   文件管理  |     区块链浏览器|   待开发   |</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/05/拆票系统项目页面功能/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-react-route详细文档" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -530,7 +596,7 @@
 <p>##那么我们如何使用多个reducer呢？我们将用到Redux包中提供的combineReducers函数。<br>// src/reducers/index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</div><div class="line"><span class="keyword">import</span> productsReducer     <span class="keyword">from</span> <span class="string">'./products-reducer'</span>;</div><div class="line"><span class="keyword">import</span> cartReducer         <span class="keyword">from</span> <span class="string">'./cart-reducer'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> allReducers = &#123;</div><div class="line">    products: productsReducer,</div><div class="line">    shoppingCart: cartReducer</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用多个reducer</span></div><div class="line"><span class="keyword">const</span> rootReducer = combineReducers(allReducers);</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> rootReducer;</div></pre></td></tr></table></figure></p>
 <h2 id="引入createStore-方法创建store"><a href="#引入createStore-方法创建store" class="headerlink" title="引入createStore()方法创建store"></a>引入createStore()方法创建store</h2><p>// src/store.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</div><div class="line"><span class="keyword">import</span> rootReducer     <span class="keyword">from</span> <span class="string">'./reducers'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 创建store</span></div><div class="line"><span class="keyword">let</span>   store = createStore(rootReducer);</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</div></pre></td></tr></table></figure></p>
 <p>通过store中的unsubscribe方法监听store数据变化<br>通过dispatch触发action<br>store.dispatch(addToCart(‘));添加数据<br>store.dispatch(updateCart(‘));添加数据<br>store.dispatch(deleteFromCart(‘));添加数据<br>// src/index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> store                                     <span class="keyword">from</span> <span class="string">'./store.js'</span>;</div><div class="line"><span class="keyword">import</span> &#123; addToCart, updateCart, deleteFromCart &#125; <span class="keyword">from</span> <span class="string">'./actions/cart-action.js'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'initial state:'</span>, store.getState());</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">let</span> unsubscribe = store.subscribe( <span class="function"><span class="params">()</span> =&gt;</span></div><div class="line">    <span class="built_in">console</span>.log(store.getState())</div><div class="line">);</div><div class="line"><span class="comment">// 通过dispatch触发action添加数据</span></div><div class="line">store.dispatch(addToCart(<span class="string">'Coffee 500gm'</span>, <span class="number">1</span>, <span class="number">250</span>));</div><div class="line">store.dispatch(addToCart(<span class="string">'Flour 1kg'</span>, <span class="number">2</span>, <span class="number">110</span>));</div><div class="line">store.dispatch(addToCart(<span class="string">'Juice 2L'</span>, <span class="number">1</span>, <span class="number">250</span>));</div><div class="line"></div><div class="line"><span class="comment">// update修改</span></div><div class="line">store.dispatch(updateCart(<span class="string">'bread 700g'</span>, <span class="number">2</span>, <span class="number">5</span>));</div><div class="line"></div><div class="line"><span class="comment">// Delete删除</span></div><div class="line">store.dispatch(deleteFromCart(<span class="string">'Coffee 500gm'</span>, <span class="number">1</span>, <span class="number">250</span>));</div><div class="line"><span class="comment">// 监听数据变化</span></div><div class="line">unsubscribe();</div></pre></td></tr></table></figure></p>
-<h2 id="最后需要在index-js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。"><a href="#最后需要在index-js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。" class="headerlink" title="最后需要在index.js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。"></a>最后需要在index.js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React                                     <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> ReactDOM                                  <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Provider &#125;                              <span class="keyword">from</span> <span class="string">'react-redux'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> App = &lt;h1&gt;Redux Shopping Cart&lt;/h1&gt;;</div><div class="line">ReactDOM.render(</div><div class="line">    &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">      &#123; App &#125;</div><div class="line">    &lt;<span class="regexp">/Provider&gt; ,</span></div><div class="line"><span class="regexp">    document.getElementById('root')</span></div><div class="line"><span class="regexp">  );</span></div></pre></td></tr></table></figure>
+<h2 id="最后需要在index-js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。"><a href="#最后需要在index-js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。" class="headerlink" title="最后需要在index.js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。"></a>最后需要在index.js文件中使用provider使它的子孙在调用connect方法时，都能获取到store。</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React                                     <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> ReactDOM                                  <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Provider &#125;                              <span class="keyword">from</span> <span class="string">'react-redux'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> App = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Redux Shopping Cart<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</div><div class="line">ReactDOM.render(</div><div class="line">    &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">      &#123; App &#125;</div><div class="line">    &lt;<span class="regexp">/Provider&gt; ,</span></div><div class="line"><span class="regexp">    document.getElementById('root')</span></div><div class="line"><span class="regexp">  );</span></div></pre></td></tr></table></figure>
       
 
       
@@ -957,99 +1023,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/11/04/良仓项目总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jQuery常用方法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/jQuery常用方法总结/">jQuery常用方法总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/24/jQuery常用方法总结/" class="archive-article-date">
-  	<time datetime="2017-10-24T09:39:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在这里我总结了一些jQuery中一些常用的方法，来供大家学习使用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#box"</span>).css(<span class="string">"width"</span>,<span class="number">500</span>)</div></pre></td></tr></table></figure></p>
-<p>这里的#box可以为id名class名标签名，还支持一些css3选择器。</p>
-<h2 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>)<span class="comment">//选择所有的div标签元素，返回div元素数组</span></div><div class="line">$(<span class="string">".myClass"</span>)<span class="comment">//选择使用myClass类的css的所有元素</span></div><div class="line">$(<span class="string">"*"</span>)<span class="comment">//选择文档中的所有的元素</span></div><div class="line">$(<span class="string">"#myELement,div,.myclass"</span>)<span class="comment">//可以运用多种的选择方式进行联合选择</span></div></pre></td></tr></table></figure>
-<h2 id="层叠选择器："><a href="#层叠选择器：" class="headerlink" title="层叠选择器："></a>层叠选择器：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"form input"</span>)<span class="comment">//选择所有的form元素中的input元素</span></div><div class="line">$(<span class="string">"#main &gt; *"</span>)<span class="comment">//选择id值为main的所有的子元素</span></div><div class="line">$(<span class="string">"label + input"</span>)<span class="comment">//选择所有的label元素的下一个input元素节点,经测试选择器返回的是label标签后面直接跟一个input标签的所有input标签元素</span></div><div class="line">$(<span class="string">"#prev ~ div"</span>)<span class="comment">//同胞选择器,该选择器返回的为id为prev的标签元素的所有的属于同一个父元素的div标签</span></div></pre></td></tr></table></figure>
-<h2 id="基本过滤选择器："><a href="#基本过滤选择器：" class="headerlink" title="基本过滤选择器："></a>基本过滤选择器：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"tr:first"</span>)<span class="comment">//选择所有tr元素的第一个</span></div><div class="line">$(<span class="string">"tr:last"</span>)<span class="comment">//选择所有tr元素的最后一个</span></div><div class="line">$(<span class="string">"input:not(:checked) + span"</span>)<span class="comment">//过滤掉：checked的选择器的所有的input元素</span></div><div class="line">$(<span class="string">"tr:even"</span>)<span class="comment">//选择所有的tr元素的第0，2，4... ...个元素（注意：因为所选择的多个元素时为数组，所以序号是从0开始）</span></div><div class="line">$(<span class="string">"tr:odd"</span>)<span class="comment">//选择所有的tr元素的第1，3，5... ...个元素</span></div><div class="line">$(<span class="string">"td:eq(2)"</span>)<span class="comment">// 选择所有的td元素中序号为2的那个td元素   </span></div><div class="line">$(<span class="string">"td:gt(4)"</span>)<span class="comment">//选择td元素中序号大于4的所有td元素</span></div><div class="line">$(<span class="string">"td:lt(4)"</span>)<span class="comment">//选择td元素中序号小于4的所有的td元素</span></div><div class="line">$(<span class="string">":header"</span>)<span class="comment">//匹配如 h1, h2, h3之类的标题元素</span></div><div class="line">$(<span class="string">"div:animated"</span>)<span class="comment">//匹配所有正在执行动画效果的div元素</span></div></pre></td></tr></table></figure>
-<h2 id="内容过滤选择器："><a href="#内容过滤选择器：" class="headerlink" title="内容过滤选择器："></a>内容过滤选择器：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div:contains('John')"</span>)<span class="comment">//选择所有div中含有John文本的元素</span></div><div class="line">$(<span class="string">"td:empty"</span>)<span class="comment">//选择所有的为空（也不包括文本节点）的td元素的数组</span></div><div class="line">$(<span class="string">"div:has(p)"</span>)<span class="comment">//选择所有含有p标签的div元素</span></div><div class="line">$(<span class="string">"td:parent"</span>)<span class="comment">//选择所有的以td为父节点的元素数组</span></div></pre></td></tr></table></figure>
-<h2 id="可视化过滤选择器："><a href="#可视化过滤选择器：" class="headerlink" title="可视化过滤选择器："></a>可视化过滤选择器：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div:hidden"</span>)<span class="comment">//选择所有的被hidden的div元素</span></div><div class="line">$(<span class="string">"div:visible"</span>)<span class="comment">//选择所有的可视化的div元素</span></div></pre></td></tr></table></figure>
-<h2 id="属性过滤选择器："><a href="#属性过滤选择器：" class="headerlink" title="属性过滤选择器："></a>属性过滤选择器：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div[id]"</span>)<span class="comment">//选择所有含有id属性的div元素</span></div><div class="line">$(<span class="string">"input[name='newsletter']"</span>)<span class="comment">//选择所有的name属性等于'newsletter'的input元素</span></div><div class="line">$(<span class="string">"input[name!='newsletter']"</span>)<span class="comment">//选择所有的name属性不等于'newsletter'的input元素</span></div><div class="line">$(<span class="string">"input[name^='news']"</span>)<span class="comment">//选择所有的name属性以'news'开头的input元素</span></div><div class="line">$(<span class="string">"input[name$='news']"</span>)<span class="comment">//选择所有的name属性以'news'结尾的input元素</span></div><div class="line">$(<span class="string">"input[name*='news']"</span>)<span class="comment">//选择所有的name属性包含'news'的input元素</span></div><div class="line">$(<span class="string">"input[id][name$='man']"</span>)<span class="comment">//可以使用多个属性进行联合选择，该选择器是得到所有的含有id属性并且name属性以man结尾的input元素</span></div></pre></td></tr></table></figure>
-<h2 id="子元素过滤选择器："><a href="#子元素过滤选择器：" class="headerlink" title="子元素过滤选择器："></a>子元素过滤选择器：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div span:first-child"</span>)<span class="comment">// 返回所有的div元素的第一个子节点的数组</span></div><div class="line">$(<span class="string">"div span:last-child"</span>)<span class="comment">//返回所有的div元素的最后一个节点的数组</span></div><div class="line">$(<span class="string">"div button:only-child"</span>)<span class="comment">//返回所有的div中只有唯一一个子节点的所有子节点的数组</span></div></pre></td></tr></table></figure>
-<h2 id="表单元素选择器："><a href="#表单元素选择器：" class="headerlink" title="表单元素选择器："></a>表单元素选择器：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">":input"</span>)<span class="comment">//选择所有的表单输入元素，包括input, textarea, select 和 button</span></div><div class="line">$(<span class="string">":text"</span>)<span class="comment">//选择所有的text input元素</span></div><div class="line">$(<span class="string">":password"</span>)<span class="comment">//选择所有的password input元素</span></div><div class="line">$(<span class="string">":radio"</span>)<span class="comment">//选择所有的radio input元素</span></div><div class="line">$(<span class="string">":checkbox"</span>)<span class="comment">//选择所有的checkbox input元素</span></div><div class="line">$(<span class="string">":submit"</span>)<span class="comment">//选择所有的submit input元素</span></div><div class="line">$(<span class="string">":image"</span>)<span class="comment">//选择所有的image input元素</span></div><div class="line">$(<span class="string">":reset"</span>)<span class="comment">//选择所有的reset input元素</span></div><div class="line">$(<span class="string">":button"</span>)<span class="comment">//选择所有的button input元素</span></div><div class="line">$(<span class="string">":file"</span>)<span class="comment">//选择所有的file input元素</span></div><div class="line">$(<span class="string">":hidden"</span>)<span class="comment">//选择所有类型为hidden的input元素或表单的隐藏域</span></div></pre></td></tr></table></figure>
-<h2 id="表单元素过滤选择器："><a href="#表单元素过滤选择器：" class="headerlink" title="表单元素过滤选择器："></a>表单元素过滤选择器：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">":enabled"</span>)<span class="comment">//选择所有的可操作的表单元素</span></div><div class="line">$(<span class="string">":disabled"</span>)<span class="comment">// 选择所有的不可操作的表单元素</span></div><div class="line">$(<span class="string">":checked"</span>)<span class="comment">//选择所有的被checked的表单元素</span></div><div class="line">$(<span class="string">"select option:selected"</span>)<span class="comment">//选择所有的select 的子元素中被selected的元素</span></div></pre></td></tr></table></figure>
-<h1 id="注意以上这些都必须加双引号。除了以下不加引号。"><a href="#注意以上这些都必须加双引号。除了以下不加引号。" class="headerlink" title="注意以上这些都必须加双引号。除了以下不加引号。"></a>注意以上这些都必须加双引号。除了以下不加引号。</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="keyword">this</span>)</div><div class="line">$(<span class="built_in">document</span>)</div><div class="line">$(<span class="built_in">window</span>)</div></pre></td></tr></table></figure>
-<p>jquery提供非常简短的代码便可实现动画效果(注意：对于同一物体只能在上一动画完成后才执行下一动画，不同物体的动画是同时进行的)。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>$(<span class="string">"div"</span>).animate(&#123;<span class="string">"width"</span>:<span class="number">600</span>&#125;,<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
-<h2 id="序与迭代"><a href="#序与迭代" class="headerlink" title="序与迭代"></a>序与迭代</h2><p>eq()方法<br>我们可以通过eq()方法来精确找到某个序列中的某个元素。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">".box2 p"</span>).eq(<span class="number">1</span>)<span class="comment">//Class名为box2下的1号下标p元素</span></div><div class="line">$(<span class="string">"p"</span>).eq(<span class="number">5</span>)<span class="comment">//下标为5的p元素</span></div></pre></td></tr></table></figure></p>
-<p>index()方法<br>返回这个元素在亲兄弟中的排名，无视选择器怎么选。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>$(<span class="string">".teshu"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="number">2</span>	alert($(<span class="keyword">this</span>).index());</div><div class="line">&#125;)<span class="comment">//点击class名为teshu物体弹出他在亲兄弟中的排名。</span></div></pre></td></tr></table></figure></p>
-<p>each()<br>each()表示遍历节点，也叫作迭代符合条件的节点(好比for循环)。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>$(<span class="string">"p"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</div><div class="line"><span class="number">2</span>	$(<span class="keyword">this</span>).animate(&#123;<span class="string">"width"</span>:<span class="number">50</span> * i&#125;,<span class="number">1000</span>);</div><div class="line">&#125;);<span class="comment">//将p标签的宽度依次递增50px</span></div></pre></td></tr></table></figure></p>
-<p>length属性<br>一共有几个p<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>$(<span class="string">"p"</span>).length</div></pre></td></tr></table></figure></p>
-<p>get()方法<br>get()方法和eq()方法基本一致,eq()返回的是jQuery对象，get()返回的是原生JS对象。原生对象后面要跟着原生属性、方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p"</span>).eq(<span class="number">2</span>).html(<span class="string">"哈哈哈哈哈哈"</span>);</div></pre></td></tr></table></figure></p>
-<p>等价于：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p"</span>).get(<span class="number">2</span>).innerHTML = <span class="string">"哈哈哈哈哈哈"</span>;</div></pre></td></tr></table></figure></p>
-<p>等价于：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p"</span>).eq(<span class="number">2</span>)[<span class="number">0</span>].innerHTML = <span class="string">"哈哈哈哈哈哈"</span>;</div></pre></td></tr></table></figure></p>
-<h2 id="动画相关方法"><a href="#动画相关方法" class="headerlink" title="动画相关方法"></a>动画相关方法</h2><p>show()显示、hide()隐藏、toggle()切换,<br>如果show()、hide()、toggle()里面有数值，将变为动画。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).show([时间],[回调函数]);<span class="comment">//语法</span></div><div class="line">$(<span class="string">"div"</span>).show();<span class="comment">//让一个本身是display:none;元素显示</span></div><div class="line">$(<span class="string">"div"</span>).hide();<span class="comment">//隐藏元素display:none;</span></div><div class="line">$(<span class="string">"div"</span>).toggle();<span class="comment">//切换显示状态。自行带有判断，如果可见，就隐藏；否则显示。</span></div></pre></td></tr></table></figure></p>
-<h2 id="slideDown-、slideUp-、slideToggle-方法"><a href="#slideDown-、slideUp-、slideToggle-方法" class="headerlink" title="slideDown()、slideUp()、slideToggle()方法"></a>slideDown()、slideUp()、slideToggle()方法</h2><p>slideDown : 下滑展开<br>slideUp：上滑收回<br>slideToggle : 滑动切换<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).slideUp();</div><div class="line">$(<span class="string">"div"</span>).slideDown();</div><div class="line">$(<span class="string">"div"</span>).slideToggle();</div></pre></td></tr></table></figure></p>
-<h2 id="fadeIn-、fadeOut-、fadeTo-、fadeToggle-方法"><a href="#fadeIn-、fadeOut-、fadeTo-、fadeToggle-方法" class="headerlink" title="fadeIn()、fadeOut()、fadeTo()、fadeToggle()方法"></a>fadeIn()、fadeOut()、fadeTo()、fadeToggle()方法</h2><p>fadeIn()淡入<br>fadeOut()淡出<br>fadeTo() 淡到那个数<br>fadeToggle() 淡出入切换<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).fadeIn(<span class="number">5000</span>);</div><div class="line">$(<span class="string">"div"</span>).fadeOut(<span class="number">5000</span>);</div><div class="line">$(<span class="string">"div"</span>).fadeTo(<span class="number">1000</span>,<span class="number">0.3</span>);</div><div class="line">$(<span class="string">"div"</span>).fadeToggle(<span class="number">5000</span>);</div></pre></td></tr></table></figure></p>
-<h2 id="stop"><a href="#stop" class="headerlink" title="stop()"></a>stop()</h2><p>停止当前的animate动画，但是不清除队列，立即执行后面的animate动画：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).stop();</div></pre></td></tr></table></figure></p>
-<p>停止当前的animate动画，并且清除队列，盒子留在了此时的位置：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).stop(<span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
-<p>瞬间完成当前的animate动画，并且清除队列：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).stop(<span class="literal">true</span>,<span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
-<p>瞬间完成当前的animate动画，但是不清楚队列，立即执行后面的动画：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).stop(<span class="literal">false</span>,<span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
-<h2 id="finish"><a href="#finish" class="headerlink" title="finish()"></a>finish()</h2><p>finish()瞬间完成所有动画队列！<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).finish();</div></pre></td></tr></table></figure></p>
-<h2 id="delay"><a href="#delay" class="headerlink" title="delay()"></a>delay()</h2><p>elay延迟，延迟指定秒数后执行。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).delay(<span class="number">1000</span>).animate(&#123;<span class="string">"left"</span>:<span class="number">500</span>&#125;,<span class="number">1000</span>);</div><div class="line">$(<span class="string">"div"</span>).delay(<span class="number">1000</span>).slideUp();</div><div class="line">$(<span class="string">"div"</span>).delay(<span class="number">1000</span>).hide(<span class="number">1</span>);<span class="comment">//必须写1，写1了就是运动</span></div></pre></td></tr></table></figure></p>
-<h2 id="is-“-animated”"><a href="#is-“-animated”" class="headerlink" title="is(“:animated”)"></a>is(“:animated”)</h2><p>is()方法表示身份探测，返回true、false。<br>is表示“是不是”，而不是“是”<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="keyword">this</span>).is(<span class="string">".t"</span>)<span class="comment">//判断p是不是有t这个类</span></div><div class="line">is(<span class="string">":animated"</span>)<span class="comment">//判断这个元素是否在运动中。</span></div></pre></td></tr></table></figure></p>
-<p>可以用该方法来防止动画的积累,判断div有动画就跳出函数不执行。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>($(<span class="string">"div"</span>).is(<span class="string">":animated"</span>))&#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/24/jQuery常用方法总结/">展开全文 >></a>
         </p>
       
 
